@@ -1,0 +1,29 @@
+@model IEnumerable<Task3_V7.Data.Author>
+@{
+    ViewData["Title"] = "Author Search";
+}
+<h2>Author Search</h2>
+<form method="get" asp-action="Search" asp-controller="Authors">
+    <input type="text" name="q" value="@((string?)ViewData["Query"])" placeholder="Author name part" />
+    <button type="submit">Search</button>
+</form>
+@if (!Model.Any())
+{
+    <p>No authors found.</p>
+}
+else
+{
+    <table class="table">
+        <thead><tr><th>Name</th><th>Birth</th><th>Death</th></tr></thead>
+        <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@a.AuthorName</td>
+                <td>@(a.BirthDate?.ToShortDateString() ?? "-")</td>
+                <td>@(a.DeathDate?.ToShortDateString() ?? "-")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

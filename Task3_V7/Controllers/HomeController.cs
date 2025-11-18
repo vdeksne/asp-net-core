@@ -1,32 +1,36 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Task3_V7.Models;
+using Microsoft.EntityFrameworkCore;
+using Task3_V7.Data;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Task3_V7.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly AppAdContext _db;
+        public HomeController(AppAdContext db)
         {
-            _logger = logger;
+            _db = db;
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> Index(string? q)
+        {
+            q = (q ?? string.Empty).Trim();
+            var books = await _db.Books
+                .Where(b => q == string.Empty || b.AuthorName.Contains(q))
+                .OrderBy(b => b.AuthorName)
+                .ThenBy(b => b.Title)
+                .ToListAsync();
+            ViewData["Query"] = q;
+            return View(books);
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
+        [HttpGet]
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
