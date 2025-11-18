@@ -1,0 +1,32 @@
+@model IEnumerable<Task3_V7.Data.Book>
+@{
+    Layout = null;
+}
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Books sorted</title></head>
+<body>
+    <p><a href="/Queries">Back</a></p>
+    <h1>Books sorted by year then title</h1>
+    @if (Model != null && Model.Any())
+    {
+        <table border="1" cellpadding="6">
+            <thead><tr><th>Year</th><th>Title</th><th>Author</th></tr></thead>
+            <tbody>
+            @foreach (var b in Model)
+            {
+                <tr>
+                    <td>@b.YearPublished</td>
+                    <td>@b.Title</td>
+                    <td>@b.AuthorName</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No books.</p>
+    }
+</body>
+</html>

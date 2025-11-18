@@ -1,0 +1,41 @@
+@model IEnumerable<Task3_V7.Data.Author>
+@{
+    Layout = null;
+    string q = (ViewBag.Q as string) ?? "";
+}
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Author search</title></head>
+<body>
+    <p><a href="/Queries">Back</a></p>
+    <h1>Author search</h1>
+    <form method="get">
+        <label>Author name contains:
+            <input name="q" value="@q" />
+        </label>
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Results</h2>
+    @if (Model != null && Model.Any())
+    {
+        <table border="1" cellpadding="6">
+            <thead><tr><th>Name</th><th>Birth</th><th>Death</th></tr></thead>
+            <tbody>
+            @foreach (var a in Model)
+            {
+                <tr>
+                    <td>@a.AuthorName</td>
+                    <td>@(a.BirthDate?.ToString("yyyy-MM-dd") ?? "")</td>
+                    <td>@(a.DeathDate?.ToString("yyyy-MM-dd") ?? "")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No results.</p>
+    }
+</body>
+</html>

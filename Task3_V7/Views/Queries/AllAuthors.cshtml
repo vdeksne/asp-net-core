@@ -1,0 +1,25 @@
+@model IEnumerable<Task3_V7.Data.Author>
+@{
+    Layout = null;
+}
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>All authors</title></head>
+<body>
+    <p><a href="/Queries">Back</a></p>
+    <h1>All authors</h1>
+    @if (Model != null && Model.Any())
+    {
+        <ul>
+        @foreach (var a in Model)
+        {
+            <li>@a.AuthorName (@(a.BirthDate?.ToString("yyyy") ?? "?") - @(a.DeathDate?.ToString("yyyy") ?? "?"))</li>
+        }
+        </ul>
+    }
+    else
+    {
+        <p>No authors.</p>
+    }
+</body>
+</html>

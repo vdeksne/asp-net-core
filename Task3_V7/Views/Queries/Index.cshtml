@@ -1,0 +1,42 @@
+@{
+    Layout = null;
+}
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Homepage - Data output options</title>
+</head>
+<body>
+    <h1>LINQ data output options</h1>
+
+    <h2>With input</h2>
+    <form method="get" action="/Queries/AuthorSearch" style="margin-bottom:12px">
+        <label>Author name contains:
+            <input name="q" placeholder="e.g. Tolkien" />
+        </label>
+        <button type="submit">Run</button>
+    </form>
+
+    <form method="get" action="/Queries/BookSearch" style="margin-bottom:12px">
+        <label>Book title contains:
+            <input name="q" placeholder="e.g. Hobbit" />
+        </label>
+        <button type="submit">Run</button>
+    </form>
+
+    <form method="get" action="/Queries/BooksByYear" style="margin-bottom:12px">
+        <label>Minimum year:
+            <input type="number" name="minYear" placeholder="e.g. 1950" />
+        </label>
+        <button type="submit">Run</button>
+    </form>
+
+    <h2>Without input</h2>
+    <ul>
+        <li><a href="/Queries/AllAuthors">All authors (sorted)</a></li>
+        <li><a href="/Queries/BooksSorted">Books sorted by year then title</a></li>
+        <li><a href="/Queries/AuthorBookCounts">Author ? Book count</a></li>
+    </ul>
+</body>
+</html>

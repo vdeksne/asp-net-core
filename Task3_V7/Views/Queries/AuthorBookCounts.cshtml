@@ -1,0 +1,31 @@
+@model IEnumerable<Task3_V7.Models.AuthorBookCountVM>
+@{
+    Layout = null;
+}
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Author book counts</title></head>
+<body>
+    <p><a href="/Queries">Back</a></p>
+    <h1>Author ? Book count</h1>
+    @if (Model != null && Model.Any())
+    {
+        <table border="1" cellpadding="6">
+            <thead><tr><th>Author</th><th>Books</th></tr></thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.AuthorName</td>
+                    <td>@item.BookCount</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No data.</p>
+    }
+</body>
+</html>

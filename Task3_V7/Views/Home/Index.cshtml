@@ -2,6 +2,33 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+
+<div class="card mb-4">
+    <div class="card-header">LINQ data output options</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>With input</h5>
+                <ul>
+                    <li><a asp-controller="Queries" asp-action="AuthorSearch">Author search</a></li>
+                    <li><a asp-controller="Queries" asp-action="BookSearch">Book search</a></li>
+                    <li><a asp-controller="Queries" asp-action="BooksByYear">Books by year</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h5>Without input</h5>
+                <ul>
+                    <li><a asp-controller="Queries" asp-action="AllAuthors">All authors (sorted)</a></li>
+                    <li><a asp-controller="Queries" asp-action="BooksSorted">Books sorted by year then title</a></li>
+                    <li><a asp-controller="Queries" asp-action="AuthorBookCounts">Author → Book count</a></li>
+                </ul>
+            </div>
+        </div>
+        <a class="btn btn-primary mt-2" asp-controller="Queries" asp-action="Index">Open queries hub</a>
+        <a class="btn btn-outline-secondary mt-2" asp-controller="Home" asp-action="Privacy">Also see on Privacy page</a>
+    </div>
+</div>
+
 <h2>Search Books by Author</h2>
 <form method="get" asp-action="Index" asp-controller="Home">
     <input type="text" name="q" value="@((string?)ViewData["Query"])" placeholder="Enter author name" />

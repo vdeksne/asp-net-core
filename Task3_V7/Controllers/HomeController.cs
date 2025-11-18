@@ -30,6 +30,7 @@ namespace Task3_V7.Controllers
         [HttpGet]
         public IActionResult Privacy()
         {
+            // Provide a simple redirect so both / (home) and /Home/Privacy can be used
             return View();
         }
     }
