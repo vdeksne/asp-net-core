@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 html {
   font-size: 14px;
 }
@@ -8,8 +10,9 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+:root {
+  --brand: #0d6efd;
+  --brand-2: #6f42c1;
 }
 
 html {
@@ -19,6 +22,46 @@ html {
 
 body {
   margin-bottom: 60px;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  color: #1f2937;
+}
+
+h1, h2, h3, .navbar-brand {
+  font-weight: 700;
+}
+
+.card {
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 6px 18px rgba(0,0,0,.05);
+  border-radius: 12px;
+}
+
+.card-header {
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  color: white;
+  font-weight: 600;
+}
+
+.table {
+  background: white;
+}
+
+.table thead th {
+  color: #111827;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {

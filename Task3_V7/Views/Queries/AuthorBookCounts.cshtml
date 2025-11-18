@@ -1,31 +1,29 @@
 @model IEnumerable<Task3_V7.Models.AuthorBookCountVM>
 @{
-    Layout = null;
+    ViewData["Title"] = "Author book counts";
 }
-<!doctype html>
-<html>
-<head><meta charset="utf-8"><title>Author book counts</title></head>
-<body>
-    <p><a href="/Queries">Back</a></p>
-    <h1>Author ? Book count</h1>
-    @if (Model != null && Model.Any())
-    {
-        <table border="1" cellpadding="6">
-            <thead><tr><th>Author</th><th>Books</th></tr></thead>
-            <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.AuthorName</td>
-                    <td>@item.BookCount</td>
-                </tr>
-            }
-            </tbody>
-        </table>
-    }
-    else
-    {
-        <p>No data.</p>
-    }
-</body>
-</html>
+<div class="card">
+    <div class="card-header">Author ? Book count</div>
+    <div class="card-body">
+        @if (Model != null && Model.Any())
+        {
+            <table class="table table-hover align-middle">
+                <thead><tr><th>Author</th><th>Books</th></tr></thead>
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.AuthorName</td>
+                        <td>@item.BookCount</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No data.</p>
+        }
+        <a class="btn btn-link" href="/Queries">Back</a>
+    </div>
+</div>

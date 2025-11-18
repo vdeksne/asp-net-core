@@ -1,25 +1,25 @@
 @model IEnumerable<Task3_V7.Data.Author>
 @{
-    Layout = null;
+    ViewData["Title"] = "All authors";
 }
-<!doctype html>
-<html>
-<head><meta charset="utf-8"><title>All authors</title></head>
-<body>
-    <p><a href="/Queries">Back</a></p>
-    <h1>All authors</h1>
-    @if (Model != null && Model.Any())
-    {
-        <ul>
-        @foreach (var a in Model)
+<div class="card">
+    <div class="card-header">All authors</div>
+    <div class="card-body">
+        @if (Model != null && Model.Any())
         {
-            <li>@a.AuthorName (@(a.BirthDate?.ToString("yyyy") ?? "?") - @(a.DeathDate?.ToString("yyyy") ?? "?"))</li>
+            <ul class="list-group list-group-flush">
+            @foreach (var a in Model)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>@a.AuthorName</span>
+                    <small class="text-muted">@(a.BirthDate?.ToString("yyyy") ?? "?") - @(a.DeathDate?.ToString("yyyy") ?? "?")</small>
+                </li>
+            }
+            </ul>
         }
-        </ul>
-    }
-    else
-    {
-        <p>No authors.</p>
-    }
-</body>
-</html>
+        else
+        {
+            <p>No authors.</p>
+        }
+    </div>
+</div>

@@ -1,42 +1,45 @@
 @{
-    Layout = null;
+    ViewData["Title"] = "Queries hub";
 }
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Homepage - Data output options</title>
-</head>
-<body>
-    <h1>LINQ data output options</h1>
-
-    <h2>With input</h2>
-    <form method="get" action="/Queries/AuthorSearch" style="margin-bottom:12px">
-        <label>Author name contains:
-            <input name="q" placeholder="e.g. Tolkien" />
-        </label>
-        <button type="submit">Run</button>
-    </form>
-
-    <form method="get" action="/Queries/BookSearch" style="margin-bottom:12px">
-        <label>Book title contains:
-            <input name="q" placeholder="e.g. Hobbit" />
-        </label>
-        <button type="submit">Run</button>
-    </form>
-
-    <form method="get" action="/Queries/BooksByYear" style="margin-bottom:12px">
-        <label>Minimum year:
-            <input type="number" name="minYear" placeholder="e.g. 1950" />
-        </label>
-        <button type="submit">Run</button>
-    </form>
-
-    <h2>Without input</h2>
-    <ul>
-        <li><a href="/Queries/AllAuthors">All authors (sorted)</a></li>
-        <li><a href="/Queries/BooksSorted">Books sorted by year then title</a></li>
-        <li><a href="/Queries/AuthorBookCounts">Author ? Book count</a></li>
-    </ul>
-</body>
-</html>
+<div class="card">
+    <div class="card-header">LINQ data output options</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>With input</h5>
+                <form method="get" action="/Queries/AuthorSearch" class="row g-2 mb-2">
+                    <div class="col-auto">
+                        <input class="form-control" name="q" placeholder="e.g. Tolkien" />
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary" type="submit">Run</button>
+                    </div>
+                </form>
+                <form method="get" action="/Queries/BookSearch" class="row g-2 mb-2">
+                    <div class="col-auto">
+                        <input class="form-control" name="q" placeholder="e.g. Hobbit" />
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary" type="submit">Run</button>
+                    </div>
+                </form>
+                <form method="get" action="/Queries/BooksByYear" class="row g-2 mb-2">
+                    <div class="col-auto">
+                        <input class="form-control" type="number" name="minYear" placeholder="e.g. 1950" />
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary" type="submit">Run</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h5>Without input</h5>
+                <ul>
+                    <li><a asp-controller="Queries" asp-action="AllAuthors">All authors (sorted)</a></li>
+                    <li><a asp-controller="Queries" asp-action="BooksSorted">Books sorted by year then title</a></li>
+                    <li><a asp-controller="Queries" asp-action="AuthorBookCounts">Author ? Book count</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

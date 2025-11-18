@@ -53,9 +53,36 @@ using (var scope = app.Services.CreateScope())
     if (!db.Books.Any())
     {
         db.Books.AddRange(
-            new Book { Title = "The Hobbit", AuthorName = "J. R. R. Tolkien", YearPublished = 1937 },
-            new Book { Title = "The Fellowship of the Ring", AuthorName = "J. R. R. Tolkien", YearPublished = 1954 },
-            new Book { Title = "Murder on the Orient Express", AuthorName = "Agatha Christie", YearPublished = 1934 }
+            new Book { Title = "Don Quixote", AuthorName = "Miguel de Cervantes", YearPublished = 1605 },
+            new Book { Title = "A Tale of Two Cities", AuthorName = "Charles Dickens", YearPublished = 1859 },
+            new Book { Title = "The Lord of the Rings", AuthorName = "J.R.R. Tolkien", YearPublished = 1954 },
+            new Book { Title = "The Little Prince", AuthorName = "Antoine de Saint-Exupéry", YearPublished = 1943 },
+            new Book { Title = "Harry Potter and the Sorcerer’s Stone", AuthorName = "J.K. Rowling", YearPublished = 1997 },
+            new Book { Title = "And Then There Were None", AuthorName = "Agatha Christie", YearPublished = 1939 },
+            new Book { Title = "Dream of the Red Chamber", AuthorName = "Cao Xueqin", YearPublished = 1791 },
+            new Book { Title = "She: A History of Adventure", AuthorName = "H. Rider Haggard", YearPublished = 1887 },
+            new Book { Title = "The Lion, the Witch and the Wardrobe", AuthorName = "C.S. Lewis", YearPublished = 1950 },
+            new Book { Title = "The Da Vinci Code", AuthorName = "Dan Brown", YearPublished = 2003 },
+            new Book { Title = "Think and Grow Rich", AuthorName = "Napoleon Hill", YearPublished = 1937 },
+            new Book { Title = "Harry Potter and the Deathly Hallows", AuthorName = "J.K. Rowling", YearPublished = 2007 },
+            new Book { Title = "Harry Potter and the Order of the Phoenix", AuthorName = "J.K. Rowling", YearPublished = 2003 },
+            new Book { Title = "Harry Potter and the Half-Blood Prince", AuthorName = "J.K. Rowling", YearPublished = 2005 },
+            new Book { Title = "Harry Potter and the Goblet of Fire", AuthorName = "J.K. Rowling", YearPublished = 2000 },
+            new Book { Title = "Harry Potter and the Prisoner of Azkaban", AuthorName = "J.K. Rowling", YearPublished = 1999 },
+            new Book { Title = "Harry Potter and the Chamber of Secrets", AuthorName = "J.K. Rowling", YearPublished = 1998 },
+            new Book { Title = "Harry Potter and the Philosopher’s Stone", AuthorName = "J.K. Rowling", YearPublished = 1997 },
+            new Book { Title = "The Catcher in the Rye", AuthorName = "J.D. Salinger", YearPublished = 1951 },
+            new Book { Title = "The Alchemist", AuthorName = "Paulo Coelho", YearPublished = 1988 },
+            new Book { Title = "The Bridges of Madison County", AuthorName = "Robert James Waller", YearPublished = 1992 },
+            new Book { Title = "Ben-Hur: A Tale of the Christ", AuthorName = "Lew Wallace", YearPublished = 1880 },
+            new Book { Title = "You Can Heal Your Life", AuthorName = "Louise Hay", YearPublished = 1984 },
+            new Book { Title = "The Girl with the Dragon Tattoo", AuthorName = "Stieg Larsson", YearPublished = 2005 },
+            new Book { Title = "The Very Hungry Caterpillar", AuthorName = "Eric Carle", YearPublished = 1969 },
+            new Book { Title = "Twilight", AuthorName = "Stephenie Meyer", YearPublished = 2005 },
+            new Book { Title = "New Moon", AuthorName = "Stephenie Meyer", YearPublished = 2006 },
+            new Book { Title = "Eclipse", AuthorName = "Stephenie Meyer", YearPublished = 2007 },
+            new Book { Title = "Breaking Dawn", AuthorName = "Stephenie Meyer", YearPublished = 2008 },
+            new Book { Title = "To Kill a Mockingbird", AuthorName = "Harper Lee", YearPublished = 1960 }
         );
     }
 

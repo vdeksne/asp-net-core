@@ -1,41 +1,45 @@
 @model IEnumerable<Task3_V7.Data.Book>
 @{
-    Layout = null;
+    ViewData["Title"] = "Book search";
     string q = (ViewBag.Q as string) ?? "";
 }
-<!doctype html>
-<html>
-<head><meta charset="utf-8"><title>Book search</title></head>
-<body>
-    <p><a href="/Queries">Back</a></p>
-    <h1>Book search</h1>
-    <form method="get">
-        <label>Book title contains:
-            <input name="q" value="@q" />
-        </label>
-        <button type="submit">Search</button>
-    </form>
+<div class="card mb-3">
+    <div class="card-header">Book search</div>
+    <div class="card-body">
+        <form method="get" class="row g-2">
+            <div class="col-auto">
+                <input class="form-control" name="q" value="@q" placeholder="e.g. Hobbit" />
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-primary" type="submit">Search</button>
+                <a class="btn btn-link" href="/Queries">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
 
-    <h2>Results</h2>
-    @if (Model != null && Model.Any())
-    {
-        <table border="1" cellpadding="6">
-            <thead><tr><th>Title</th><th>Author</th><th>Year</th></tr></thead>
-            <tbody>
-            @foreach (var b in Model)
-            {
-                <tr>
-                    <td>@b.Title</td>
-                    <td>@b.AuthorName</td>
-                    <td>@b.YearPublished</td>
-                </tr>
-            }
-            </tbody>
-        </table>
-    }
-    else
-    {
-        <p>No results.</p>
-    }
-</body>
-</html>
+<div class="card">
+    <div class="card-header">Results</div>
+    <div class="card-body">
+        @if (Model != null && Model.Any())
+        {
+            <table class="table table-hover align-middle">
+                <thead><tr><th>Title</th><th>Author</th><th>Year</th></tr></thead>
+                <tbody>
+                @foreach (var b in Model)
+                {
+                    <tr>
+                        <td>@b.Title</td>
+                        <td>@b.AuthorName</td>
+                        <td>@b.YearPublished</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No results.</p>
+        }
+    </div>
+</div>
