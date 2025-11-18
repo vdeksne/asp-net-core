@@ -2,18 +2,21 @@ using Task3_V7.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Use SQL Server like previous project
+// Use SQL Server like previous project and enable logging for diagnostics
 builder.Services.AddDbContext<AppAdContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Default"))
+           .EnableSensitiveDataLogging()
+           .LogTo(Console.WriteLine, LogLevel.Information));
 
-builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>  
 {
-    options.Password.RequireDigit = false;
-    options.Password.RequireLowercase = false;
-    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireDigit = false;  
+    options.Password.RequireLowercase = false;          
+    options.Password.RequireNonAlphanumeric = false;    
     options.Password.RequireUppercase = false;
     options.Password.RequiredLength = 3;
     options.Password.RequiredUniqueChars = 1;
@@ -30,15 +33,14 @@ builder.Services.AddAuthorization(options =>
         policy.RequireClaim(ClaimTypes.Role, "Admin"));
 });
 var app = builder.Build();
-
-// Create DB fresh and seed sample data
+    
+// Apply migrations and seed sample data (no drop)
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppAdContext>();
 
-    // Always recreate to ensure schema matches the model (Not for production)
-    db.Database.EnsureDeleted();
-    db.Database.EnsureCreated();
+    // Apply pending migrations; creates DB if it doesn't exist
+    db.Database.Migrate();
 
     if (!db.Authors.Any())
     {
