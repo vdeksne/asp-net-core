@@ -26,6 +26,8 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+// Also enable API controllers
+builder.Services.AddControllers();
 
 builder.Services.AddAuthorization(options =>
 {
@@ -113,6 +115,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+// Map attribute-routed API controllers
+app.MapControllers();
 
 app.MapControllerRoute(
     name: "default",
